@@ -52,6 +52,7 @@ typedef struct s_philo
 
 }               t_philo;
 
+void        philosopher(t_arg arg);
 t_philo     *set_list(int size, t_shared *shared);
 t_shared    *set_shared(t_arg arg);
 void        *routine(void *philo);
@@ -60,7 +61,5 @@ void        unlock(t_philo *philo);
 void        lock(t_philo *philo);
 void        protect_write(t_philo *philo, char *str);
 int         ft_atoi(char *str);
-void        monitoring(t_philo *philo);
-void        exit_thread(t_philo *philo);
 
 #endif
