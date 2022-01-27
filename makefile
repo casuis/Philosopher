@@ -6,11 +6,12 @@ FLAG		=	-Wall -Wextra -Werror
 
 THREAD_F	=	-lpthread
 
-C_FILE		=	main.c		\
-				function.c	\
-				liste.c		\
-				protect.c	\
-				routine.c	\
+C_FILE		=	main.c			\
+				philosopher.c	\
+				function.c		\
+				liste.c			\
+				protect.c		\
+				routine.c		\
 
 C_DIR		=	./src/
 
