@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 17:44:11 by asimon            #+#    #+#             */
-/*   Updated: 2022/01/27 17:44:17 by asimon           ###   ########.fr       */
+/*   Created: 2022/01/27 20:43:34 by asimon            #+#    #+#             */
+/*   Updated: 2022/01/27 20:43:35 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
  
-void    create_thread(t_philo *philo)
+static void    create_thread(t_philo *philo)
 {
     t_philo         *buff;
 
@@ -24,7 +24,7 @@ void    create_thread(t_philo *philo)
     }
 }
 
-void    monitoring(t_philo *philo)
+static void    monitoring(t_philo *philo)
 {
     int     time;
 
@@ -54,7 +54,7 @@ void    monitoring(t_philo *philo)
     }
 }
 
-void    exit_thread(t_philo *philo)
+static void    exit_thread(t_philo *philo)
 {
     t_philo     *buff;
 
@@ -85,6 +85,8 @@ void    philosopher(t_arg arg)
     t_philo         *buff;
     t_shared        *shared;
 
+    if (arg.nb_philo <= 0|| arg.t_dead <= 0|| arg.t_eat <= 0 || arg.t_sleep <= 0)
+        return ;
     shared = set_shared(arg);
     philo = set_list(arg.nb_philo, shared);
     if (philo == NULL)
@@ -94,23 +96,4 @@ void    philosopher(t_arg arg)
         create_thread(buff);
     monitoring(buff);
     exit_thread(philo);
-}
-
-int main(int argc, char const *argv[])
-{
-    t_arg       arg;
-
-    if (argc == 5)
-        arg.need_eat = -1;
-    else if (argc >= 6)
-        arg.need_eat = ft_atoi((char *)argv[5]);
-    if (argc >= 5)
-    {
-        arg.nb_philo = ft_atoi((char *)argv[1]);
-        arg.t_dead = ft_atoi((char *)argv[2]);
-        arg.t_eat = ft_atoi((char *)argv[3]);
-        arg.t_sleep = ft_atoi((char *)argv[4]);
-        philosopher(arg);
-    }
-    return 0;
 }
