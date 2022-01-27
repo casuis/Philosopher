@@ -37,15 +37,15 @@ t_shared    *set_shared(t_arg arg)
     t_shared    *ret;
 
     ret = malloc(sizeof(t_shared));
-    ret->arg = arg;
     ret->dead = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
-    pthread_mutex_init(ret->dead, NULL);
     ret->write_protect = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
-    pthread_mutex_init(ret->write_protect, NULL);
     ret->is_dead = malloc(sizeof(int));
-    *(ret->is_dead) = 0;
     ret->eat_enough = malloc(sizeof(int));
+    ret->arg = arg;
+    *(ret->is_dead) = 0;
     *(ret->eat_enough) = 0;
+    pthread_mutex_init(ret->dead, NULL);
+    pthread_mutex_init(ret->write_protect, NULL);
     return (ret);
 }
 

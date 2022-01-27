@@ -64,11 +64,13 @@ static void    exit_thread(t_philo *philo)
         pthread_join(buff->thread, NULL);
         buff = buff->next;
     }
-    free(philo->shared->is_dead);
     pthread_mutex_destroy(philo->shared->write_protect);
     pthread_mutex_destroy(philo->shared->dead);
     free(philo->shared->dead);
     free(philo->shared->write_protect);
+    free(philo->shared->is_dead);
+    free(philo->shared->eat_enough);
+    free(philo->shared);
     while (philo->balise != 1)
     {
         buff = philo->next;
