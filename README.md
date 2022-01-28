@@ -1,11 +1,9 @@
 #Philosopher
-==
 
-Project Philosopher for the 42 school
---
+##Project Philosopher for the 42 school
 
-Here is the global ideas of th program:
---
+
+###Here is the global ideas of th program:
 
 One or more philosophers sit at a round table:
 
