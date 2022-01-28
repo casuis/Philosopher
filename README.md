@@ -57,7 +57,7 @@ $ make
 ### (optionnel) Il est aussi possible d'ajouter un dernier argument 
 
 
-* Le nombre de repas necessaire a un philosophe pour etre repus
+* Le nombre de repas necessaires a un philosophe
 
 ```
 $ ./philo [nb_philo] [temps_sans_manger] [temps_pour_manger] [temps_repos] (optionnel: [nb_de_repas])
