@@ -37,7 +37,22 @@ Pour compiler:
 $ make
 ```
 
-L'execution prend 4 arguments obligatoires et 1 argument optionnel:
+#### L'execution prend 4 arguments obligatoires:
+
+* le nb de philossophe(s) présent(s)
+
+* Le temps qu'un philosophe peut passer sans manger
+
+* Le temps que prendra un philosophe pour manger
+
+* Le temps que prendra un philosophe pour dormir
+
+#### Il est aussi possible d'ajouter un dernier argument (optionnel)
+
+* Le nombre de repas necessaire a un philosophe pour etre repus
+
+
+L'exectuon ce presente comme ci-dessous:
 ```
-$ ./philo [nb de philo] [temps sans manger] [temps pour manger] [temps de repos] (optionnel: [nb de repas necessaire pour finir])
+$ ./philo [nb_philo] [temps_sans_manger] [temps_pour_manger] [temps_repos] (optionnel: [nb_de_repas])
 ```
