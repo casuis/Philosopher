@@ -5,7 +5,7 @@ Project Philosopher for the 42 school
 --
 
 Here is the global ideas of th program:
-Title 4
+--
 
 One or more philosophers sit at a round table:
 
