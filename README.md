@@ -34,14 +34,14 @@ and, of course, while sleeping, they are not eating nor thinking.
 ## Execution
 
 
-Compilation:
+###Compilation:
 
 ```
 $ make
 ```
 
 
-#### L'execution prend 4 arguments obligatoires:
+### L'execution prend 4 arguments obligatoires:
 
 
 * le nb de philossophe(s) présent(s)
@@ -54,7 +54,7 @@ $ make
 
 
 
-#### Il est aussi possible d'ajouter un dernier argument (optionnel)
+### Il est aussi possible d'ajouter un dernier argument (optionnel)
 
 
 * Le nombre de repas necessaire a un philosophe pour etre repus
