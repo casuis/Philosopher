@@ -4,6 +4,7 @@
 
 
 ### Here is the global ideas of th programe:
+***
 
 One or more philosophers sit at a round table:
 
