@@ -23,22 +23,22 @@ int	get_timestamp(struct timeval start)
 	return (timestamp);
 }
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-    int     i;
-    int     ret;
-    int     neg;
+	int		i;
+	int		ret;
+	int		neg;
 
-    i = 0;
-    ret = 0;
-    neg = 1;
-    while (str[i] && (str[i] == '+' || str[i] == '-'))
-        if (str[i++] == '-')
-            neg = -1;
-    while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-    {
-        ret = (ret * 10) + (str[i] - 48);
-        i++;
-    }
-    return (ret * neg);
+	i = 0;
+	ret = 0;
+	neg = 1;
+	while (str[i] && (str[i] == '+' || str[i] == '-'))
+		if (str[i++] == '-')
+			neg = -1;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		ret = (ret * 10) + (str[i] - 48);
+		i++;
+	}
+	return (ret * neg);
 }
