@@ -59,8 +59,6 @@ $ make
 
 * Le nombre de repas necessaire a un philosophe pour etre repus
 
-
-
 ```
 $ ./philo [nb_philo] [temps_sans_manger] [temps_pour_manger] [temps_repos] (optionnel: [nb_de_repas])
 ```
