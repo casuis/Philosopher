@@ -1,10 +1,11 @@
 # Philosopher
 
-## Voici mon projet "Philosopher" pour l'école 42
+Voici mon projet "Philosopher" pour l'école 42
 
 
 
-### Idée Global:
+
+## Idée Global:
 
 
 One or more philosophers sit at a round table:
@@ -29,7 +30,8 @@ and, of course, while sleeping, they are not eating nor thinking.
 * Philosophers should avoid dying
 
 
-### Execution
+
+## Execution
 
 
 Compilation:
