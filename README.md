@@ -31,8 +31,13 @@ and, of course, while sleeping, they are not eating nor thinking.
 
 ### Execution
 
+
+Pour compiler:
 ```
 $ make
-$ ./philo [nb de philo] [temps sans manger] [temps pour manger] [temps de repos] (optionnel: [nb de repas necessaire pour finir])
+```
 
+L'execution prend 4 arguments obligatoires et 1 argument optionnel:
+```
+$ ./philo [nb de philo] [temps sans manger] [temps pour manger] [temps de repos] (optionnel: [nb de repas necessaire pour finir])
 ```
