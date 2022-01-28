@@ -54,7 +54,7 @@ $ make
 
 
 
-### Il est aussi possible d'ajouter un dernier argument (optionnel)
+### (optionnel) Il est aussi possible d'ajouter un dernier argument 
 
 
 * Le nombre de repas necessaire a un philosophe pour etre repus
