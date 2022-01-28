@@ -34,7 +34,7 @@ and, of course, while sleeping, they are not eating nor thinking.
 ## Execution
 
 
-###Compilation:
+### Compilation:
 
 ```
 $ make
@@ -44,13 +44,13 @@ $ make
 ### L'execution prend 4 arguments obligatoires:
 
 
-* le nb de philossophe(s) présent(s)
+1 le nb de philossophe(s) présent(s)
 
-* Le temps qu'un philosophe peut passer sans manger
+2 Le temps qu'un philosophe peut passer sans manger
 
-* Le temps que prendra un philosophe pour manger
+3 Le temps que prendra un philosophe pour manger
 
-* Le temps que prendra un philosophe pour dormir
+4 Le temps que prendra un philosophe pour dormir
 
 
 
