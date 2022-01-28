@@ -43,6 +43,7 @@ static t_philo	*check_value(t_philo *philo)
 		pthread_mutex_unlock(philo->shared->dead);
 		philo = philo->next;
 	}
+	return (philo);
 }
 
 static void	monitoring(t_philo *philo)
