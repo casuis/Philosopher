@@ -44,7 +44,7 @@ $ make
 ### L'execution prend 4 arguments obligatoires:
 
 
-1. le nb de philossophe(s) présent(s)
+1. le nb de philosophe(s) présent(s)
 
 2. Le temps qu'un philosophe peut passer sans manger
 
@@ -57,10 +57,31 @@ $ make
 ### (optionnel) Il est aussi possible d'ajouter un dernier argument 
 
 
-* Le nombre de repas necessaires a un philosophe
+* Le nombre(s) de repas necessaire(s) a un philosophe
 
 ```
 $ ./philo [nb_philo] [temps_sans_manger] [temps_pour_manger] [temps_repos] (optionnel: [nb_de_repas])
 ```
 
+#### Idées de tests
+
+
+* Pour faire mourir un philosophe:
+```
+$ ./philo 4 310 200 100 
+```
+
+* Pour les faires manger indefiniments
+```
+$ ./philo 4 410 200 200
+```
+
+* Pour permettre a un philosophe manger a sa faim
+```
+$ ./philo 4 410 200 200 5
+```
+
 ***
+
+## Ressources
+
