@@ -12,38 +12,37 @@
 
 #include "../include/philo.h"
 
-void    protect_write(t_philo *philo, char *str)
+void	protect_write(t_philo *philo, char *str)
 {
-    pthread_mutex_lock(philo->shared->write_protect);
-    printf(str, get_timestamp(philo->tmstp), philo->index);
-    pthread_mutex_unlock(philo->shared->write_protect);
+	pthread_mutex_lock(philo->shared->write_protect);
+	printf(str, get_timestamp(philo->tmstp), philo->index);
+	pthread_mutex_unlock(philo->shared->write_protect);
 }
 
-void    lock(t_philo *philo)
+void	lock(t_philo *philo)
 {
-    
-    pthread_mutex_lock(&(philo->fork));
-    if (*(philo->shared->is_dead) != 1 )
-        protect_write(philo, "%d Philo %d as taken a fork\n");
-    if (philo->next->balise == 1)
-    {
-        pthread_mutex_lock(&(philo->next->next->fork));
-        if (*(philo->shared->is_dead) != 1)
-            protect_write(philo, "%d Philo %d as taken a fork\n");
-    }
-    else
-    {
-        pthread_mutex_lock(&(philo->next->fork));
-        if (*(philo->shared->is_dead) != 1)
-            protect_write(philo, "%d Philo %d as taken a fork\n");
-    }
+	pthread_mutex_lock(&(philo->fork));
+	if (*(philo->shared->is_dead) != 1)
+		protect_write(philo, "%d Philo %d as taken a fork\n");
+	if (philo->next->balise == 1)
+	{
+		pthread_mutex_lock(&(philo->next->next->fork));
+		if (*(philo->shared->is_dead) != 1)
+			protect_write(philo, "%d Philo %d as taken a fork\n");
+	}
+	else
+	{
+		pthread_mutex_lock(&(philo->next->fork));
+		if (*(philo->shared->is_dead) != 1)
+			protect_write(philo, "%d Philo %d as taken a fork\n");
+	}
 }
 
-void    unlock(t_philo *philo)
+void	unlock(t_philo *philo)
 {
-    pthread_mutex_unlock(&(philo->fork));
-    if (philo->next->balise == 1)
-        pthread_mutex_unlock(&(philo->next->next->fork));
-    else
-        pthread_mutex_unlock(&(philo->next->fork));
+	pthread_mutex_unlock(&(philo->fork));
+	if (philo->next->balise == 1)
+		pthread_mutex_unlock(&(philo->next->next->fork));
+	else
+		pthread_mutex_unlock(&(philo->next->fork));
 }
