@@ -5,7 +5,7 @@ _Voici mon projet "Philosopher" pour l'école 42_
 
 
 
-## Idée Global:
+## Idée Global
 
 
 One or more philosophers sit at a round table:
