@@ -1,10 +1,11 @@
 # Philosopher
 ***
 
-## This is my Project Philosopher for the 42 school
+## Voici mon projet "Philosopher" pour l'école 42
 
 
-### Here is the global ideas of th programe:
+
+### Idée Global:
 
 
 One or more philosophers sit at a round table:
@@ -32,12 +33,15 @@ and, of course, while sleeping, they are not eating nor thinking.
 ### Execution
 
 
-Pour compiler:
+Compilation:
+
 ```
 $ make
 ```
 
+
 #### L'execution prend 4 arguments obligatoires:
+
 
 * le nb de philossophe(s) présent(s)
 
@@ -47,12 +51,14 @@ $ make
 
 * Le temps que prendra un philosophe pour dormir
 
+
+
 #### Il est aussi possible d'ajouter un dernier argument (optionnel)
+
 
 * Le nombre de repas necessaire a un philosophe pour etre repus
 
 
-L'exectuon ce presente comme ci-dessous:
 ```
 $ ./philo [nb_philo] [temps_sans_manger] [temps_pour_manger] [temps_repos] (optionnel: [nb_de_repas])
 ```
