@@ -1,5 +1,4 @@
 # Philosopher
-***
 
 ## Voici mon projet "Philosopher" pour l'école 42
 
