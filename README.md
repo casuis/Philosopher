@@ -1,1 +1,2 @@
-== Philosopher ==
+Philosopher
+==
