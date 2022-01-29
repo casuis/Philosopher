@@ -1,6 +1,6 @@
 # Philosopher
 
-_Voici mon projet "Philosopher" pour l'école 42_
+_Voici mon projet Philosopher pour l'école 42 - 2022_
 
 
 
