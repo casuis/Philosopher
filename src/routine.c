@@ -19,7 +19,9 @@ void	eating(t_philo *philo)
 	{
 		pthread_mutex_lock(philo->shared->dead);
 		philo->last_meal = get_timestamp(philo->tmstp);
+		pthread_mutex_lock(&(philo->count_protect));
 		philo->count += 1;
+		pthread_mutex_unlock(&(philo->count_protect));
 		protect_write(philo, "%d Philo %d is eating\n");
 		pthread_mutex_unlock(philo->shared->dead);
 		usleep(philo->shared->arg.t_eat * 999);

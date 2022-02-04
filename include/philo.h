@@ -48,6 +48,7 @@ typedef struct s_philo
 	pthread_t			thread;
 	struct timeval		tmstp;
 	pthread_mutex_t		fork;
+	pthread_mutex_t		count_protect;
 	struct s_philo		*next;
 }	t_philo;
 

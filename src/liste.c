@@ -16,11 +16,12 @@ void	set_philo(t_philo *philo, int index, struct timeval time, t_shared *s)
 {
 	philo->balise = 0;
 	philo->index = index;
-	philo->shared = s;
 	philo->count = 0;
-	philo->tmstp = time;
 	philo->last_meal = 0;
+	philo->shared = s;
+	philo->tmstp = time;
 	pthread_mutex_init(&(philo->fork), NULL);
+	pthread_mutex_init(&(philo->count_protect), NULL);
 }
 
 void	balised(t_philo *balise, t_philo *start)
