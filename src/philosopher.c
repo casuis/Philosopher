@@ -29,7 +29,8 @@ static t_philo	*check_value(t_philo *philo)
 	int		time;
 
 	time = 0;
-	pthread_mutex_lock(&(philo->count_protect));
+	if (philo->balise != 1 && *(philo->shared->is_dead) != 1)
+		pthread_mutex_lock(&(philo->count_protect));
 	while (philo->balise != 1 && *(philo->shared->is_dead) != 1
 		&& philo->count != philo->shared->arg.need_eat)
 	{
@@ -44,10 +45,11 @@ static t_philo	*check_value(t_philo *philo)
 		}
 		pthread_mutex_unlock(philo->shared->dead);
 		philo = philo->next;
-		if (philo->balise != 1 && *(philo->shared->is_dead) != 1) 
-			if (philo->shared->arg.need_eat != philo->count)
-				pthread_mutex_lock(&(philo->count_protect));
+		if (philo->balise != 1 && *(philo->shared->is_dead) != 1)
+			pthread_mutex_lock(&(philo->count_protect));
 	}
+	if (philo->balise != 1 && *(philo->shared->is_dead) != 1)
+		pthread_mutex_unlock(&(philo->count_protect));
 	return (philo);
 }
 
@@ -69,7 +71,7 @@ static void	monitoring(t_philo *philo)
 	{
 		memset(philo->shared->eat_enough, 1, 1);
 		usleep(4000);
-		protect_write(philo, "%d Philo %d as eat enough\n");
+		protect_write(philo, "%d Philo %d has eat enough\n");
 	}
 }
 
