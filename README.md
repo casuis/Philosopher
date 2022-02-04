@@ -1,6 +1,6 @@
 # Philosopher
 
-_Voici mon projet "Philosopher" pour l'école 42_
+_Voici mon projet Philosopher pour l'école 42 - 2022_
 
 
 
@@ -10,6 +10,8 @@ _Voici mon projet "Philosopher" pour l'école 42_
 
 One or more philosophers sit at a round table:
 
+
+* Each philosopher should be a thread.
 
 * The philosophers alternatively eat, think, or sleep.
 While they are eating, they are not thinking nor sleeping; while thinking, they are not eating nor sleeping;
