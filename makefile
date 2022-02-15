@@ -2,7 +2,7 @@ NAME        =   philo
 
 CC			=	clang
 
-FLAG		=	-Wall -Wextra -Werror -g3
+FLAG		=	-Wall -Wextra -Werror
 
 THREAD_F	=	-lpthread
 
