@@ -70,6 +70,8 @@ static void	monitoring(t_philo *philo)
 		&& *(philo->shared->is_dead) != 1)
 	{
 		memset(philo->shared->eat_enough, 1, 1);
+		usleep(4000);
+		printf("%d Philo %d has eat enough\n", get_timestamp(philo->tmstp), 
 			philo->index);
 	}
 }
