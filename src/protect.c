@@ -14,7 +14,7 @@
 
 void	protect_write(t_philo *philo, char *str)
 {
-	if (protect_check(philo) != 1 && )
+	if (protect_check(philo) != 1 /*&& prob check for eat_enough*/ )
 		printf(str, get_timestamp(philo->tmstp), philo->index);
 	pthread_mutex_unlock(philo->shared->write_protect);
 }
