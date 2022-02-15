@@ -40,8 +40,8 @@ static t_philo	*check_value(t_philo *philo)
 		if ((time - philo->last_meal) > (philo->shared->arg.t_dead + 1))
 		{
 			*(philo->shared->is_dead) = 1;
-			usleep(2000);
-			printf("%d Philo %d died\n", get_timestamp(philo->tmstp), philo->index);
+			printf("%d Philo %d died\n", get_timestamp(philo->tmstp),
+				philo->index);
 		}
 		pthread_mutex_unlock(philo->shared->dead);
 		philo = philo->next;
@@ -70,8 +70,7 @@ static void	monitoring(t_philo *philo)
 		&& *(philo->shared->is_dead) != 1)
 	{
 		memset(philo->shared->eat_enough, 1, 1);
-		usleep(4000);
-		protect_write(philo, "%d Philo %d has eat enough\n");
+			philo->index);
 	}
 }
 

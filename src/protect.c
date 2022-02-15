@@ -14,12 +14,10 @@
 
 void	protect_write(t_philo *philo, char *str)
 {
-	pthread_mutex_lock(philo->shared->write_protect);
 	if (protect_check(philo) != 1)
-			printf(str, get_timestamp(philo->tmstp), philo->index);
+		printf(str, get_timestamp(philo->tmstp), philo->index);
 	pthread_mutex_unlock(philo->shared->write_protect);
 }
-
 
 void	lock2(t_philo *philo)
 {
