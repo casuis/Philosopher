@@ -37,11 +37,11 @@ static t_philo	*check_value(t_philo *philo)
 		pthread_mutex_unlock(&(philo->count_protect));
 		pthread_mutex_lock(philo->shared->dead);
 		time = get_timestamp(philo->tmstp);
-		if ((time - philo->last_meal) > (philo->shared->arg.t_dead))
+		if ((time - philo->last_meal) > (philo->shared->arg.t_dead + 1))
 		{
 			*(philo->shared->is_dead) = 1;
-			usleep(8000);
-			protect_write(philo, "%d Philo %d died\n");
+			usleep(2000);
+			printf("%d Philo %d died\n", get_timestamp(philo->tmstp), philo->index);
 		}
 		pthread_mutex_unlock(philo->shared->dead);
 		philo = philo->next;
@@ -82,7 +82,8 @@ static void	exit_thread(t_philo *philo)
 	buff = philo;
 	while (buff->balise != 1)
 	{
-		pthread_join(buff->thread, NULL);
+		if (!(buff->index == 1 && buff->next->balise == 1))
+			pthread_join(buff->thread, NULL);
 		buff = buff->next;
 	}
 	pthread_mutex_destroy(philo->shared->write_protect);
