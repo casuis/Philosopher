@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:43:34 by asimon            #+#    #+#             */
-/*   Updated: 2022/01/27 20:43:35 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/15 13:50:50 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static t_philo	*check_value(t_philo *philo)
 		pthread_mutex_unlock(&(philo->count_protect));
 		pthread_mutex_lock(philo->shared->dead);
 		time = get_timestamp(philo->tmstp);
-		if ((time - philo->last_meal) > (philo->shared->arg.t_dead + 2))
+		if ((time - philo->last_meal) > (philo->shared->arg.t_dead))
 		{
-			memset(philo->shared->is_dead, 1, 1);
-			usleep(1000);
+			*(philo->shared->is_dead) = 1;
+			usleep(8000);
 			protect_write(philo, "%d Philo %d died\n");
 		}
 		pthread_mutex_unlock(philo->shared->dead);
