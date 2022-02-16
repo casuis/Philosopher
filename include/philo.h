@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:41:24 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/16 20:15:12 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/16 20:36:42 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int			protect_check(t_philo *philo);
 int			ft_atoi(char *str);
 void		monitoring(t_philo *philo);
 void		ft_error(char *str);
-int			check_main(t_arg arg);
+int			check_main(t_arg arg, int argc, char **argv);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:57:52 by arthur            #+#    #+#             */
-/*   Updated: 2022/02/16 20:03:54 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/16 20:38:59 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	protect_write(t_philo *philo, char *str)
 	if (protect_check(philo))
 	{
 		pthread_mutex_lock(philo->shared->write_protect);
-			printf(str, get_timestamp(philo->tmstp), philo->index);
+		printf(str, get_timestamp(philo->tmstp), philo->index);
 		pthread_mutex_unlock(philo->shared->write_protect);
 	}
 }
