@@ -12,6 +12,7 @@ C_FILE		=	main.c			\
 				liste.c			\
 				protect.c		\
 				routine.c		\
+				monitoring.c	\
 
 C_DIR		=	./src/
 

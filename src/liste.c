@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:19:54 by asimon            #+#    #+#             */
-/*   Updated: 2022/01/22 17:19:55 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/16 19:37:33 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ t_shared	*set_shared(t_arg arg)
 	ret->dead = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
 	ret->write_protect = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
 	ret->is_dead = malloc(sizeof(int));
-	ret->eat_enough = malloc(sizeof(int));
 	ret->arg = arg;
 	*(ret->is_dead) = 0;
-	*(ret->eat_enough) = 0;
 	pthread_mutex_init(ret->dead, NULL);
 	pthread_mutex_init(ret->write_protect, NULL);
 	return (ret);

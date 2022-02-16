@@ -6,11 +6,24 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:18:43 by arthur            #+#    #+#             */
-/*   Updated: 2022/01/22 17:18:44 by arthur           ###   ########.fr       */
+/*   Updated: 2022/02/16 20:14:57 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+
+int	ft_strlen(char *str)
+{
+	int		i;
+
+	i = 0;
+	if (str == NULL)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int	get_timestamp(struct timeval start)
 {
@@ -41,4 +54,26 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (ret * neg);
+}
+
+void	ft_error(char *str)
+{
+	write(2, str, ft_strlen(str));
+}
+
+int	check_main(t_arg arg)
+{
+	if (arg.need_eat >= 2147483647 || arg.need_eat <= -2147483648)
+		return (0);
+	else if (arg.nb_philo >= 2147483647 || arg.nb_philo <= -2147483648)
+		return (0);
+	else if (arg.t_dead >= 2147483647 || arg.t_dead <= -2147483648)
+		return (0);
+	else if (arg.t_eat >= 2147483647 || arg.t_eat <= -2147483648)
+		return (0);
+	else if (arg.t_sleep >= 2147483647 || arg.t_sleep <= -2147483648)
+		return (0);
+	else
+		return (1);
+	return (0);
 }

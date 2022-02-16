@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:43:34 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/15 13:50:50 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/16 19:37:14 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,58 +21,6 @@ static void	create_thread(t_philo *philo)
 	{
 		pthread_create(&(buff->thread), NULL, &routine, buff);
 		buff = buff->next;
-	}
-}
-
-static t_philo	*check_value(t_philo *philo)
-{
-	int		time;
-
-	time = 0;
-	if (philo->balise != 1 && *(philo->shared->is_dead) != 1)
-		pthread_mutex_lock(&(philo->count_protect));
-	while (philo->balise != 1 && *(philo->shared->is_dead) != 1
-		&& philo->count != philo->shared->arg.need_eat)
-	{
-		pthread_mutex_unlock(&(philo->count_protect));
-		pthread_mutex_lock(philo->shared->dead);
-		time = get_timestamp(philo->tmstp);
-		if ((time - philo->last_meal) > (philo->shared->arg.t_dead + 1))
-		{
-			*(philo->shared->is_dead) = 1;
-			printf("%d Philo %d died\n", get_timestamp(philo->tmstp),
-				philo->index);
-		}
-		pthread_mutex_unlock(philo->shared->dead);
-		philo = philo->next;
-		if (philo->balise != 1 && *(philo->shared->is_dead) != 1)
-			pthread_mutex_lock(&(philo->count_protect));
-	}
-	if (philo->balise != 1 && *(philo->shared->is_dead) != 1)
-		pthread_mutex_unlock(&(philo->count_protect));
-	return (philo);
-}
-
-static void	monitoring(t_philo *philo)
-{
-	pthread_mutex_lock(&(philo->count_protect));
-	while (*(philo->shared->is_dead) != 1
-		&& philo->count != philo->shared->arg.need_eat)
-	{
-		pthread_mutex_unlock(&(philo->count_protect));
-		philo = check_value(philo);
-		if (philo->balise == 1)
-			philo = philo->next;
-		pthread_mutex_lock(&(philo->count_protect));
-	}
-	pthread_mutex_unlock(&(philo->count_protect));
-	if (philo->count == philo->shared->arg.need_eat
-		&& *(philo->shared->is_dead) != 1)
-	{
-		memset(philo->shared->eat_enough, 1, 1);
-		usleep(4000);
-		printf("%d Philo %d has eat enough\n", get_timestamp(philo->tmstp), 
-			philo->index);
 	}
 }
 
@@ -92,7 +40,6 @@ static void	exit_thread(t_philo *philo)
 	free(philo->shared->dead);
 	free(philo->shared->write_protect);
 	free(philo->shared->is_dead);
-	free(philo->shared->eat_enough);
 	free(philo->shared);
 	while (philo->balise != 1)
 	{
