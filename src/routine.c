@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:55:33 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/16 20:49:51 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/17 16:17:13 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	eating(t_philo *philo)
 	pthread_mutex_lock(philo->shared->dead);
 	philo->last_meal = get_timestamp(philo->tmstp);
 	pthread_mutex_unlock(philo->shared->dead);
-	protect_write(philo, "%d Philo %d is eating\n");
+	protect_write(philo, "%d Philo %d is eating | repas: %d\n");
 	pthread_mutex_lock(&(philo->count_protect));
 	philo->count += 1;
 	pthread_mutex_unlock(&(philo->count_protect));
@@ -37,6 +37,8 @@ void	sleeping(t_philo *philo)
 void	thinking(t_philo *philo)
 {
 	protect_write(philo, "%d Philo %d is thinking\n");
+	if (philo->index % 2 == 0)
+		usleep((philo->shared->arg.t_eat - philo->shared->arg.t_sleep) * 100);
 }
 
 void	*routine(void *philo)
@@ -45,7 +47,7 @@ void	*routine(void *philo)
 
 	buff = (t_philo *)philo;
 	if (buff->index % 2 == 0)
-		usleep(2000);
+		usleep(buff->shared->arg.t_eat * 10);
 	while (protect_check(buff))
 	{
 		eating(buff);
