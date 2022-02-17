@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:57:52 by arthur            #+#    #+#             */
-/*   Updated: 2022/02/17 17:09:13 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/17 17:30:06 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ void	lock(t_philo *philo)
 {
 	if (philo->index % 2 != 0)
 	{
-		if (philo->next->balise == 1)
-			pthread_mutex_lock(&(philo->next->next->fork));
-		else
+		if (philo->next->balise != 1)
 			pthread_mutex_lock(&(philo->next->fork));
+		else
+			pthread_mutex_lock(&(philo->next->next->fork));
 		protect_write(philo, "%d Philos %d as taken a fork\n");
-		//pthread_mutex_lock(philo->shared->protect_write);
-		//printf("| repas : %d ", philo->count);
 		pthread_mutex_lock(&(philo->fork));
 		protect_write(philo, "%d Philos %d as taken a fork\n");
 	}
@@ -52,8 +50,6 @@ void	lock(t_philo *philo)
 	{
 		pthread_mutex_lock(&(philo->fork));
 		protect_write(philo, "%d Philos %d as taken a fork\n");
-		if (philo->shared->arg.nb_philo % 2 != 0)
-			usleep((philo->shared->arg.t_eat / 2) * 1000);
 		if (philo->next->balise != 1)
 			pthread_mutex_lock(&(philo->next->fork));
 		else

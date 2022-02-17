@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:43:34 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/16 19:37:14 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/17 17:26:08 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	create_thread(t_philo *philo)
 	while (buff->balise != 1)
 	{
 		pthread_create(&(buff->thread), NULL, &routine, buff);
+		usleep(100);
 		buff = buff->next;
 	}
 }
