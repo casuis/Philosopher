@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:57:52 by arthur            #+#    #+#             */
-/*   Updated: 2022/02/16 20:38:59 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/16 22:44:55 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ int	protect_check(t_philo *philo)
 
 void	lock(t_philo *philo)
 {
-	if (philo->index % 2 != 0 && philo->next->balise == 1)
-		pthread_mutex_lock(&(philo->fork));
-	else if (philo->index % 2 != 0 && philo->balise != 1)
+	if (philo->index % 2 != 0 && philo->index == 1 && philo->count == 0)
 		pthread_mutex_lock(&(philo->next->fork));
-	else if (philo->index % 2 == 0)
+	else if (philo->index % 2 != 0)
 		pthread_mutex_lock(&(philo->fork));
-	protect_write(philo, "%d Philo %d has taken a fork\n");
+	if (philo->index % 2 == 0)
+		pthread_mutex_lock(&(philo->fork));
+	protect_write(philo, "%d Philo as taken a fork\n");
+	if (philo->index % 2 != 0 && philo->index == 1 && philo->count == 0)
+		pthread_mutex_lock(&(philo->fork));
+	else if (philo->index % 2 != 0 && philo->next->balise != 1)
+		pthread_mutex_lock(&(philo->next->fork));
 	if (philo->index % 2 == 0 && philo->next->balise != 1)
 		pthread_mutex_lock(&(philo->next->fork));
-	else if (philo->index % 2 == 0 && philo->next->balise == 1)
+	else if (philo->next->balise == 1)
 		pthread_mutex_lock(&(philo->next->next->fork));
-	else if (philo->index % 2 != 0 && philo->next->balise == 1)
-		pthread_mutex_lock(&(philo->next->next->fork));
-	else if (philo->index % 2 != 0 && philo->next->balise != 1)
-		pthread_mutex_lock(&(philo->fork));
-	protect_write(philo, "%d Philo %d has taken a fork\n");
+	protect_write(philo, "%d Philo as taken a fork\n");
 }
 
 void	unlock(t_philo *philo)

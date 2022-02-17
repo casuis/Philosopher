@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:33:23 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/16 20:02:31 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/17 13:03:43 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	monitoring(t_philo *philo)
 			pthread_mutex_lock(&(philo->count_protect));
 			*(start->shared->is_dead) = 1;
 			pthread_mutex_unlock(&(philo->count_protect));
+			usleep(2000);
 			pthread_mutex_lock(philo->shared->write_protect);
 			printf("END\n");
 			pthread_mutex_unlock(philo->shared->write_protect);
