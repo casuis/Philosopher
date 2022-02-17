@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:44:11 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/16 20:15:29 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/16 20:37:33 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char const *argv[])
 		arg.t_dead = ft_atoi((char *)argv[2]);
 		arg.t_eat = ft_atoi((char *)argv[3]);
 		arg.t_sleep = ft_atoi((char *)argv[4]);
-		if (check_main(arg))
+		if (check_main(arg, argc, (char **)argv))
 			philosopher(arg);
 	}
 	return (0);

@@ -6,12 +6,11 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:18:43 by arthur            #+#    #+#             */
-/*   Updated: 2022/02/16 20:14:57 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/17 14:33:29 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
 
 int	ft_strlen(char *str)
 {
@@ -61,17 +60,23 @@ void	ft_error(char *str)
 	write(2, str, ft_strlen(str));
 }
 
-int	check_main(t_arg arg)
+int	check_main(t_arg arg, int argc, char **argv)
 {
-	if (arg.need_eat >= 2147483647 || arg.need_eat <= -2147483648)
+	if (ft_strlen(argv[1]) > 10 || ft_strlen(argv[2]) > 10
+		|| ft_strlen(argv[3]) > 10)
 		return (0);
-	else if (arg.nb_philo >= 2147483647 || arg.nb_philo <= -2147483648)
+	if (argc >= 5)
+		if (ft_strlen(argv[4]) > 10)
+			return (0);
+	if (arg.need_eat > 2147483647 || arg.need_eat <= -2147483648)
 		return (0);
-	else if (arg.t_dead >= 2147483647 || arg.t_dead <= -2147483648)
+	else if (arg.nb_philo > 2147483647 || arg.nb_philo <= -2147483648)
 		return (0);
-	else if (arg.t_eat >= 2147483647 || arg.t_eat <= -2147483648)
+	else if (arg.t_dead > 2147483647 || arg.t_dead <= -2147483648)
 		return (0);
-	else if (arg.t_sleep >= 2147483647 || arg.t_sleep <= -2147483648)
+	else if (arg.t_eat > 2147483647 || arg.t_eat <= -2147483648)
+		return (0);
+	else if (arg.t_sleep > 2147483647 || arg.t_sleep <= -2147483648)
 		return (0);
 	else
 		return (1);
