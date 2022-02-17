@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:55:33 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/17 16:17:13 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/17 17:05:59 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	sleeping(t_philo *philo)
 void	thinking(t_philo *philo)
 {
 	protect_write(philo, "%d Philo %d is thinking\n");
-	if (philo->index % 2 == 0)
-		usleep((philo->shared->arg.t_eat - philo->shared->arg.t_sleep) * 100);
 }
 
 void	*routine(void *philo)
@@ -47,7 +45,7 @@ void	*routine(void *philo)
 
 	buff = (t_philo *)philo;
 	if (buff->index % 2 == 0)
-		usleep(buff->shared->arg.t_eat * 10);
+		usleep(buff->shared->arg.t_eat * 100);
 	while (protect_check(buff))
 	{
 		eating(buff);
