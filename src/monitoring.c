@@ -6,7 +6,7 @@
 /*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:33:23 by asimon            #+#    #+#             */
-/*   Updated: 2022/02/17 13:03:43 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/18 18:38:50 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,13 @@ static int	monitoring_eat(t_philo *philo)
 		return (0);
 	while (philo->balise != 1)
 	{
+		pthread_mutex_lock(&(philo->count_protect));
 		if (philo->count < philo->shared->arg.need_eat)
+		{
+			pthread_mutex_unlock(&(philo->count_protect));
 			return (0);
+		}
+		pthread_mutex_unlock(&(philo->count_protect));
 		philo = philo->next;
 	}
 	return (1);
@@ -57,9 +62,9 @@ void	monitoring(t_philo *philo)
 	{
 		if (monitoring_eat(start))
 		{
-			pthread_mutex_lock(&(philo->count_protect));
+			pthread_mutex_lock(philo->shared->dead);
 			*(start->shared->is_dead) = 1;
-			pthread_mutex_unlock(&(philo->count_protect));
+			pthread_mutex_unlock(philo->shared->dead);
 			usleep(2000);
 			pthread_mutex_lock(philo->shared->write_protect);
 			printf("END\n");

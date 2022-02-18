@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:18:43 by arthur            #+#    #+#             */
-/*   Updated: 2022/02/17 14:33:29 by asimon           ###   ########.fr       */
+/*   Updated: 2022/02/17 18:52:06 by asimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ int	check_main(t_arg arg, int argc, char **argv)
 			return (0);
 	if (arg.need_eat > 2147483647 || arg.need_eat <= -2147483648)
 		return (0);
-	else if (arg.nb_philo > 2147483647 || arg.nb_philo <= -2147483648)
+	else if (arg.nb_philo > 2147483647 || arg.nb_philo < 0)
 		return (0);
-	else if (arg.t_dead > 2147483647 || arg.t_dead <= -2147483648)
+	else if (arg.t_dead > 2147483647 || arg.t_dead < 0)
 		return (0);
-	else if (arg.t_eat > 2147483647 || arg.t_eat <= -2147483648)
+	else if (arg.t_eat > 2147483647 || arg.t_eat < 0)
 		return (0);
-	else if (arg.t_sleep > 2147483647 || arg.t_sleep <= -2147483648)
+	else if (arg.t_sleep > 2147483647 || arg.t_sleep < 0)
 		return (0);
 	else
 		return (1);
