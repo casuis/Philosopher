@@ -62,23 +62,18 @@ void	ft_error(char *str)
 
 int	check_main(t_arg arg, int argc, char **argv)
 {
-	if (ft_strlen(argv[1]) > 10 || ft_strlen(argv[2]) > 10
-		|| ft_strlen(argv[3]) > 10)
-		return (0);
 	if (argc >= 5)
-		if (ft_strlen(argv[4]) > 10)
+	{
+		if (argc > 5)
+			if (ft_strlen(argv[4]) > 10)
+				return (0);
+			else
+				return (1);
+		if (ft_strlen(argv[1]) > 10 || ft_strlen(argv[2]) > 10
+			|| ft_strlen(argv[3]) > 10)
 			return (0);
-	if (arg.need_eat > 2147483647 || arg.need_eat <= -2147483648)
-		return (0);
-	else if (arg.nb_philo > 2147483647 || arg.nb_philo < 0)
-		return (0);
-	else if (arg.t_dead > 2147483647 || arg.t_dead < 0)
-		return (0);
-	else if (arg.t_eat > 2147483647 || arg.t_eat < 0)
-		return (0);
-	else if (arg.t_sleep > 2147483647 || arg.t_sleep < 0)
-		return (0);
-	else
-		return (1);
+		else
+			return (1);
+	}
 	return (0);
 }
