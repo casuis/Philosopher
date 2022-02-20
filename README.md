@@ -1,4 +1,5 @@
 # Philosopher
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/asimon/Philosophers)](https://github.com/JaeSeoKim/badge42)
 
 _Voici mon projet Philosopher pour l'école 42 - 2022_
 
