@@ -87,3 +87,15 @@ $ ./philo 4 410 200 200 5
 
 ## Ressources
 
+
+Pour verifier les datas races et autres messages d'erreurs:
+```
+$> valgrind --tool=helgrind ./philo [args]
+```
+
+Valgrind ralentit le programme, dans certains cas ou le programme n'aurai pas le temps de tourner assez longtemps (1 tour et le philo meurt), je vous consceil de tester avec:
+```
+$> clang -Wall -Wextra -Werror -fsanitize=thread -g3
+```
+L'option 'thread'sur fsanitize est moins precise que valgrind mais le ralentit moins, cela vous permettra une seconde verification de votre programme.
+
